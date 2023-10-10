@@ -7,7 +7,7 @@ const METHOD = {
 };
 
 const METHOD_MAPPING = {
-  [METHOD.GET]: async (_, _res: NextApiResponse) => {
+  [METHOD.GET]: async (_: any, _res: NextApiResponse) => {
     const response = await fetch(`${DATA_SOURCE_URL}/${PATHS.GET}`);
 
     return _res.status(200).json(await response.json());

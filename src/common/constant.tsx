@@ -1,3 +1,5 @@
+import { ButtonType } from "./interfaces";
+
 export const DATA_SOURCE_URL = "https://dummy.restapiexample.com/api/v1";
 export const PATHS = {
   GET: "employees",
@@ -17,3 +19,8 @@ export const fakeData = [
     profile_image: "",
   },
 ];
+
+export const BUTTON: ButtonType = {
+  edit: "Edit",
+  create: "Create",
+};

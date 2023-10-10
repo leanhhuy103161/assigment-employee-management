@@ -1,22 +1,16 @@
-import { useState } from "react";
-import { Employee } from "../interfaces";
 import { useRouter } from "next/router";
-import { LOCALES_MAPPING } from "@/locales/locales";
+import { useState } from "react";
+
+import { Employee } from "../interfaces";
+import { LOCALES, LOCALES_MAPPING } from "@/locales/locales";
+import Input from "./Input";
+import { BUTTON } from "../constant";
 
 interface Props {
   employee?: Employee;
   stateHandler: (event: any) => void;
   type?: string;
 }
-
-type ButtonType = {
-  [key: string]: string;
-};
-
-const BUTTON: ButtonType = {
-  edit: "Edit",
-  create: "Create",
-};
 
 const EmployeeForm: React.FC<Props> = ({
   employee,
@@ -27,9 +21,7 @@ const EmployeeForm: React.FC<Props> = ({
     string | Blob | MediaSource | undefined
   >(employee?.profile_image);
 
-  console.log(employee);
-
-  const { locale = "en" } = useRouter();
+  const { locale = LOCALES.en } = useRouter();
   const t = LOCALES_MAPPING[locale];
 
   const onSubmit = (event: any) => {
@@ -44,8 +36,6 @@ const EmployeeForm: React.FC<Props> = ({
       employee_salary: formFields.salary.value,
       profile_image: selectedImage,
     };
-
-    console.log(payload);
 
     stateHandler(payload);
   };
@@ -118,48 +108,27 @@ const EmployeeForm: React.FC<Props> = ({
             </div>
           </div>
           <div className="flex-1">
-            <div className="pb-2 p-5 card ">
-              <div className="flex flex-col items-start">
-                <label className="label">
-                  <span className="text-sm">{t.form.nameLabel}</span>
-                </label>
-                <input
-                  id="name"
-                  defaultValue={employee?.employee_name}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-            </div>
-            <div className="pb-2 p-5 card ">
-              <div className="flex flex-col items-start">
-                <label className="label">
-                  <span className="text-sm">{t.form.ageLabel}</span>
-                </label>
-                <input
-                  id="age"
-                  defaultValue={employee?.employee_age}
-                  type="number"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-            </div>
-            <div className="p-5 card ">
-              <div className="flex flex-col items-start">
-                <label className="label">
-                  <span className="text-sm">{t.form.salaryLabel}</span>
-                </label>
-                <input
-                  id="salary"
-                  defaultValue={employee?.employee_salary}
-                  type="number"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-            </div>
+            <Input
+              label={t.form.nameLabel}
+              id="name"
+              type="text"
+              defaultValue={employee?.employee_name}
+              required
+            />
+            <Input
+              label={t.form.ageLabel}
+              id="age"
+              type="number"
+              defaultValue={employee?.employee_age}
+              required
+            />
+            <Input
+              label={t.form.salaryLabel}
+              id="salary"
+              type="number"
+              defaultValue={employee?.employee_salary}
+              required
+            />
           </div>
         </div>
         <div className="flex justify-center">

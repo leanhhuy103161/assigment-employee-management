@@ -11,3 +11,7 @@ export type responseType = {
   status: string;
   data: Employee[];
 };
+
+export type ButtonType = {
+  [key: string]: string;
+};

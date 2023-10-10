@@ -1,13 +1,20 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 import { CreateIcon, DetailIcon, EmployeeIcon } from "../icons";
 import { useEmployeeStore } from "@/store/useEmployeeStore";
-import { useRouter } from "next/router";
-import { LOCALES_MAPPING } from "@/locales/locales";
+import { LOCALES, LOCALES_MAPPING } from "@/locales/locales";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { editingEmployee } = useEmployeeStore();
 
-  const { locale = "en", pathname, asPath, query, ...router } = useRouter();
+  const {
+    locale = LOCALES.en,
+    pathname,
+    asPath,
+    query,
+    ...router
+  } = useRouter();
   const t = LOCALES_MAPPING[locale];
 
   const handleSelectLocale = (event: any) => {
@@ -47,7 +54,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 </span>
               </Link>
             </li>
-            {editingEmployee && (
+            {/* {editingEmployee && (
               <li>
                 <Link
                   href={`/${editingEmployee.id}`}
@@ -63,7 +70,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                   </span>
                 </Link>
               </li>
-            )}
+            )} */}
             <li>
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <CreateIcon />

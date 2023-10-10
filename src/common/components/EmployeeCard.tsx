@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { Employee } from "../interfaces";
 import { useEmployeeStore } from "@/store/useEmployeeStore";
-import { LOCALES_MAPPING } from "@/locales/locales";
+import { LOCALES, LOCALES_MAPPING } from "@/locales/locales";
 
 interface Props {
   employee: Employee;
@@ -12,7 +12,7 @@ interface Props {
 const EmployeeCard: React.FC<Props> = ({ employee }) => {
   const { removeEmployee } = useEmployeeStore();
 
-  const { locale = "en" } = useRouter();
+  const { locale = LOCALES.en } = useRouter();
   const t = LOCALES_MAPPING[locale];
 
   return (
@@ -38,7 +38,7 @@ const EmployeeCard: React.FC<Props> = ({ employee }) => {
         </span>
         <div className="flex mt-4 space-x-3">
           <Link
-            href={`/employee/${employee.id}`}
+            href={`/${employee.id}`}
             className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
           >
             {t.card.edit}

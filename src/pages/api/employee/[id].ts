@@ -40,6 +40,6 @@ const METHOD_MAPPING = {
   },
 };
 
-export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
+export default function handler(_req: any, _res: NextApiResponse) {
   return METHOD_MAPPING[_req.method](_req, _res) || _res.status(500);
 }

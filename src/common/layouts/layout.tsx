@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <ul className="space-y-2 font-medium h-full flex flex-col">
             <li>
               <Link
-                href="/employee"
+                href="/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <EmployeeIcon />
@@ -38,7 +38,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </li>
             <li>
               <Link
-                href="/employee/create"
+                href="/create"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <CreateIcon />
@@ -50,7 +50,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             {editingEmployee && (
               <li>
                 <Link
-                  href={`/employee/${editingEmployee.id}`}
+                  href={`/${editingEmployee.id}`}
                   className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                 >
                   <DetailIcon />

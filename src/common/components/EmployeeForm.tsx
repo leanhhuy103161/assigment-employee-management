@@ -21,7 +21,13 @@ const EmployeeForm: React.FC<Props> = ({
     string | Blob | MediaSource | undefined
   >(employee?.profile_image);
 
-  const { locale = LOCALES.en } = useRouter();
+  const {
+    locale = LOCALES.en,
+    pathname,
+    query,
+    asPath,
+    ...router
+  } = useRouter();
   const t = LOCALES_MAPPING[locale];
 
   const onSubmit = (event: any) => {
@@ -38,6 +44,7 @@ const EmployeeForm: React.FC<Props> = ({
     };
 
     stateHandler(payload);
+    router.push(`/${locale}/`);
   };
 
   return (

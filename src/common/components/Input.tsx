@@ -13,7 +13,7 @@ const Input: React.FC<Props> = ({
   id,
   type,
 }) => (
-  <div className="pb-2 p-5 card ">
+  <div className="pb-2 p-5 card">
     <div className="flex flex-col items-start">
       <label className="label">
         <span className="text-sm">{label}</span>

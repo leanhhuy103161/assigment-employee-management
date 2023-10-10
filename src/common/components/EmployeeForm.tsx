@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Employee } from "../interfaces";
+import { useRouter } from "next/router";
+import { LOCALES_MAPPING } from "@/locales/locales";
 
 interface Props {
   employee?: Employee;
@@ -10,6 +12,9 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
   const [selectedImage, setSelectedImage] = useState<
     string | Blob | MediaSource | undefined
   >(employee?.profile_image);
+
+  const { locale = "en" } = useRouter();
+  const t = LOCALES_MAPPING[locale];
 
   const onSubmit = (event: any) => {
     event.preventDefault();
@@ -25,7 +30,6 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
     };
 
     stateHandler(payload);
-    // redirect("/employee");
   };
 
   return (
@@ -39,7 +43,7 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
             <div className="pb-2 p-5 card h-full">
               <div className="flex flex-col items-start">
                 <label className="label">
-                  <span className="label-text">Avatar</span>
+                  <span className="label-text">{t.form.avatar}</span>
                 </label>
                 <label
                   htmlFor="uploadImageProfile"
@@ -98,7 +102,7 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
             <div className="pb-2 p-5 card ">
               <div className="flex flex-col items-start">
                 <label className="label">
-                  <span className="text-sm">Employee Name</span>
+                  <span className="text-sm">{t.form.nameLabel}</span>
                 </label>
                 <input
                   id="name"
@@ -112,7 +116,7 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
             <div className="pb-2 p-5 card ">
               <div className="flex flex-col items-start">
                 <label className="label">
-                  <span className="text-sm">Age</span>
+                  <span className="text-sm">{t.form.ageLabel}</span>
                 </label>
                 <input
                   id="age"
@@ -126,7 +130,7 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
             <div className="p-5 card ">
               <div className="flex flex-col items-start">
                 <label className="label">
-                  <span className="text-sm">Salary</span>
+                  <span className="text-sm">{t.form.salaryLabel}</span>
                 </label>
                 <input
                   id="salary"

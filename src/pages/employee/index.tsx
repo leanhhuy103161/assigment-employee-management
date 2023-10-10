@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import EmployeeCard from "@/common/components/EmployeeCard";
 import { Employee } from "@/common/interfaces";
 import RootLayout from "@/common/layouts/layout";
+import { useRouter } from "next/router";
+import { LOCALES_MAPPING } from "@/locales/locales";
 
 interface Props {
   data: Employee[];
@@ -12,6 +14,8 @@ interface Props {
 
 const UserList: React.FC<Props> = ({ data }): React.ReactElement => {
   const { updateEmployeeList, employees } = useEmployeeStore();
+  const { locale = "en" } = useRouter();
+  const t = LOCALES_MAPPING[locale];
 
   useEffect(() => {
     if (!employees.length) {

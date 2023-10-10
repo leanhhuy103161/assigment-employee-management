@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { locale = "en", pathname, asPath, query, ...router } = useRouter();
   const t = LOCALES_MAPPING[locale];
 
-  const handleSelectLocale = (event) => {
+  const handleSelectLocale = (event: any) => {
     router.push({ pathname, query }, asPath, {
       locale: event.target.value,
     });

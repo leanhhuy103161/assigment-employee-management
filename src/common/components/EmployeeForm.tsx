@@ -6,12 +6,28 @@ import { LOCALES_MAPPING } from "@/locales/locales";
 interface Props {
   employee?: Employee;
   stateHandler: (event: any) => void;
+  type?: string;
 }
 
-const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
+type ButtonType = {
+  [key: string]: string;
+};
+
+const BUTTON: ButtonType = {
+  edit: "Edit",
+  create: "Create",
+};
+
+const EmployeeForm: React.FC<Props> = ({
+  employee,
+  stateHandler,
+  type = "create",
+}) => {
   const [selectedImage, setSelectedImage] = useState<
     string | Blob | MediaSource | undefined
   >(employee?.profile_image);
+
+  console.log(employee);
 
   const { locale = "en" } = useRouter();
   const t = LOCALES_MAPPING[locale];
@@ -28,6 +44,8 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
       employee_salary: formFields.salary.value,
       profile_image: selectedImage,
     };
+
+    console.log(payload);
 
     stateHandler(payload);
   };
@@ -87,7 +105,6 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
                 </label>
                 <input
                   type="file"
-                  required
                   id="uploadImageProfile"
                   accept="image/*"
                   className="hidden"
@@ -148,7 +165,7 @@ const EmployeeForm: React.FC<Props> = ({ employee, stateHandler }) => {
             type="submit"
             className="btn px-4 py-2 mb-4 text-white bg-blue-700 rounded-lg hover:bg-blue-800"
           >
-            Create
+            {BUTTON[type]}
           </button>
         </div>
       </div>

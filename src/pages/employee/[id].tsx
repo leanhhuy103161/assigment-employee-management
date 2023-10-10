@@ -24,6 +24,7 @@ const UserDetail: React.FC = () => {
         <EmployeeForm
           stateHandler={editEmployee}
           employee={editingEmployee || undefined}
+          type="edit"
         />
       </main>
     </DashboardLayout>

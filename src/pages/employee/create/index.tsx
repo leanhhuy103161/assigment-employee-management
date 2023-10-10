@@ -9,7 +9,7 @@ export default function CreateUser() {
   return (
     <DashboardLayout>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <EmployeeForm stateHandler={editEmployee} />
+        <EmployeeForm stateHandler={editEmployee} type="create" />
       </main>
     </DashboardLayout>
   );

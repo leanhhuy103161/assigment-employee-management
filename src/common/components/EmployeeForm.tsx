@@ -95,8 +95,9 @@ const EmployeeForm: React.FC<Props> = ({
                         <img
                           className="uploadImage absolute flex items-center justify-center w-56 h-56 rounded-full bg-base-100 z-50 opacity-50 hover:opacity-80"
                           src={
-                            (selectedImage as Blob | MediaSource) &&
-                            URL.createObjectURL(selectedImage)
+                            (typeof selectedImage !== "string" &&
+                              URL.createObjectURL(selectedImage)) ||
+                            ""
                           }
                         ></img>
                       </>
@@ -109,7 +110,8 @@ const EmployeeForm: React.FC<Props> = ({
                   accept="image/*"
                   className="hidden"
                   onChange={(event) => {
-                    setSelectedImage(event.target.files[0]);
+                    if (event.target.files !== null)
+                      setSelectedImage(event.target.files[0]);
                   }}
                 />
               </div>

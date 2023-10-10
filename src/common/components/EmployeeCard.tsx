@@ -21,7 +21,7 @@ const EmployeeCard: React.FC<Props> = ({ employee }) => {
         <img
           className="w-24 h-24 mb-3 rounded-full shadow-lg"
           src={
-            employee.profile_image
+            employee.profile_image && typeof employee.profile_image !== "string"
               ? URL.createObjectURL(employee.profile_image)
               : `https://ui-avatars.com/api/?name=${employee.employee_name}`
           }

@@ -9,19 +9,18 @@ const METHOD = {
 };
 
 const METHOD_MAPPING = {
-  [METHOD.GET]: async (_req: Request, _res: NextApiResponse) => {
-    const id = _res.params.id;
+  [METHOD.GET]: async (_req: NextApiRequest, _res: NextApiResponse) => {
+    const { id } = _req.query;
 
     const response = await fetch(
       `${DATA_SOURCE_URL}/${PATHS.GET_DETAIL}/${id}`
     );
     return _res.status(200).json(await response.json());
   },
-  [METHOD.PUT]: async (_req: Request, _res: NextApiResponse) => {
-    const { searchParams } = new URL(_req.url);
-    const id = searchParams.get("id");
+  [METHOD.PUT]: async (_req: NextApiRequest, _res: NextApiResponse) => {
+    const { id } = _req.query;
 
-    const body: EmployeeProps = await _req.json();
+    const body: EmployeeProps = await _req.body();
 
     const response = await fetch(`${DATA_SOURCE_URL}/${PATHS.PUT}/${id}`, {
       method: "PUT",
@@ -30,9 +29,8 @@ const METHOD_MAPPING = {
 
     return _res.status(200).json(await response.json());
   },
-  [METHOD.DELETE]: async (_req: Request, _res: NextApiResponse) => {
-    const { searchParams } = new URL(_req.url);
-    const id = searchParams.get("id");
+  [METHOD.DELETE]: async (_req: NextApiRequest, _res: NextApiResponse) => {
+    const { id } = _req.query;
 
     const response = await fetch(`${DATA_SOURCE_URL}/${PATHS.DELETE}/${id}`, {
       method: "DELETE",
@@ -42,6 +40,6 @@ const METHOD_MAPPING = {
   },
 };
 
-export default function handler(_req: Request, _res: NextApiResponse) {
-  return METHOD_MAPPING[_req.method](_req, _res);
+export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
+  return METHOD_MAPPING[_req.method](_req, _res) || _res.status(500);
 }

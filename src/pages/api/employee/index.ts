@@ -1,4 +1,4 @@
-import { DATA_SOURCE_URL, PATHS, REVALIDATE } from "@/common/constant";
+import { DATA_SOURCE_URL, PATHS } from "@/common/constant";
 import { NextApiResponse } from "next";
 
 const METHOD = {

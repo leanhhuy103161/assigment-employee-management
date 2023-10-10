@@ -2,7 +2,7 @@ export type EmployeeProps = {
   employee_name?: string;
   employee_salary?: number | string;
   employee_age?: number | string;
-  profile_image?: string;
+  profile_image?: string | Blob | MediaSource;
 };
 
 export type Employee = EmployeeProps & { id: string };

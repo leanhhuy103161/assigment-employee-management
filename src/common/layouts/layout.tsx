@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { CreateIcon, DetailIcon, EmployeeIcon } from "../icons";
-import { useEmployeeStore } from "@/store/useEmployeeStore";
+import { CreateIcon, EmployeeIcon } from "../icons";
 import { LOCALES, LOCALES_MAPPING } from "@/locales/locales";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const { editingEmployee } = useEmployeeStore();
-
   const {
     locale = LOCALES.en,
     pathname,
@@ -54,23 +51,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                 </span>
               </Link>
             </li>
-            {/* {editingEmployee && (
-              <li>
-                <Link
-                  href={`/${editingEmployee.id}`}
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <DetailIcon />
-                  <span className="flex-1 ml-3 whitespace-nowrap">
-                    {t.sidebar.tab.detail}
-                  </span>
-
-                  <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                    ID: {editingEmployee.id}
-                  </span>
-                </Link>
-              </li>
-            )} */}
             <li>
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <CreateIcon />

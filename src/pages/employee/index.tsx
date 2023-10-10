@@ -45,7 +45,10 @@ const fakeData = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate");
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=300, stale-while-revalidate"
+  );
   try {
     const response = await fetch(process.env.DB_HOST + `/api/employee`);
 

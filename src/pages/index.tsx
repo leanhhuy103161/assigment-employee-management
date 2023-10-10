@@ -6,6 +6,8 @@ import EmployeeCard from "@/common/components/EmployeeCard";
 import { Employee } from "@/common/interfaces";
 import RootLayout from "@/common/layouts/layout";
 import { fakeData } from "@/common/constant";
+import Table from "@/common/components/Table";
+import Tab from "@/common/components/Tab";
 
 interface Props {
   data: Employee[];
@@ -23,9 +25,8 @@ const UserList: React.FC<Props> = ({ data }): React.ReactElement => {
   return (
     <RootLayout>
       <div className="flex flex-wrap align content-start">
-        {employees.map((employee) => (
-          <EmployeeCard key={employee.id} employee={employee} />
-        ))}
+        <Tab />
+        <Table employees={employees} />
       </div>
     </RootLayout>
   );

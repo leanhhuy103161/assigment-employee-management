@@ -50,9 +50,8 @@ export const TAB_LIST = [
 ];
 
 export const ACTIVE_TAB_MAPPER = {
-  true: "text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500",
-  false:
-    "bg-white text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700",
+  true: "text-blue-600 border-blue-600 active",
+  false: "bg-white text-gray-500 border-b border-gray-200",
 };
 
 export const ACTIVE_TYPE_MAPPER = {

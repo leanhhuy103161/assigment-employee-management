@@ -28,7 +28,7 @@ const TableRow: React.FC<TableRowProps> = ({ employee, editable = false }) => {
   const t = LOCALES_MAPPING[locale];
 
   return (
-    <tr key={employee.id} className="border-b dark:border-neutral-500">
+    <tr key={employee.id} className="border-b">
       <td className="whitespace-nowrap px-6 py-4 font-medium">{employee.id}</td>
       <td className="whitespace-nowrap px-6 py-4 flex items-center truncate  max-w-xs">
         <img
@@ -50,7 +50,7 @@ const TableRow: React.FC<TableRowProps> = ({ employee, editable = false }) => {
         <td className="whitespace-nowrap px-6 py-4">
           <Link
             href={`/${employee.id}`}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
           >
             {t.card.edit}
           </Link>
@@ -72,7 +72,7 @@ const TableHeader = ({ editable = false }: { editable?: boolean }) => {
   const t = LOCALES_MAPPING[locale];
 
   return (
-    <thead className="border-b font-medium dark:border-neutral-500">
+    <thead className="border-b font-medium">
       <tr>
         <th scope="col" className="px-6 py-4">
           #

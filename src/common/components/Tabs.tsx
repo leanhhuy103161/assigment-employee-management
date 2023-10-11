@@ -40,7 +40,7 @@ const Tabs: React.FC & TabsCompoundType = () => {
   }, [asPath]);
 
   return (
-    <div className="text-sm  mb-4 font-medium text-center bg-white text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+    <div className="text-sm  mb-4 font-medium text-center bg-white text-gray-500 border-b border-gray-200">
       <ul className="flex flex-wrap -mb-px">
         {TAB_LIST.map((tab) => (
           <Tab key={tab.id} activeTab={activeTab} translate={t} {...tab} />

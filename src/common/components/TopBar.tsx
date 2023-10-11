@@ -17,7 +17,7 @@ const TopBar: React.FC<TopBarProps> = ({
 
   return (
     <div className="flex-1 z-auto flex flex-col ">
-      <nav className="px-4 w-full fixed flex justify-between bg-gray-50 dark:bg-gray-800 h-16 border-b-2">
+      <nav className="px-4 w-full fixed flex justify-between bg-blue-50  h-16 border-b-2">
         <ul className="flex items-center">
           <li className="h-6 w-6"></li>
         </ul>
@@ -32,7 +32,7 @@ const TopBar: React.FC<TopBarProps> = ({
 
         <ul className="flex items-center">
           <li>
-            <div className="ml-auto flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <div className="ml-auto flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 group">
               <CreateIcon />
               <div className="relative inline-flex self-center ml-3">
                 <select

@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "querystring";
+
 export type EmployeeProps = {
   employee_name?: string;
   employee_salary?: number | string;
@@ -15,3 +17,16 @@ export type responseType = {
 export type ButtonType = {
   [key: string]: string;
 };
+
+export interface TopBarProps {
+  pathname: string;
+  query: ParsedUrlQuery;
+  asPath: string;
+  router: any;
+  locale: string;
+  translate: any;
+}
+
+export interface SideBarProps {
+  translate: any;
+}

@@ -1,4 +1,19 @@
 export default {
+  topBar: {
+    title: "従業員管理",
+  },
+  tab: {
+    viewOnly: "表示専用テーブル",
+    editable: "編集可能なテーブル",
+    create: "ユーザーを作成",
+  },
+  table: {
+    header: {
+      nameLabel: "従業員名",
+      ageLabel: "年数",
+      salaryLabel: "給料",
+    },
+  },
   sidebar: {
     tab: {
       employees: "従業員",
@@ -11,6 +26,7 @@ export default {
     nameLabel: "従業員名",
     ageLabel: "年数",
     salaryLabel: "給料",
+    action: "アクション",
   },
   card: {
     ageLabel: "年数",

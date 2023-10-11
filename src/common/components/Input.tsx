@@ -4,6 +4,8 @@ interface Props {
   required?: boolean;
   id: string;
   type: string;
+  pattern?: string;
+  title?: string;
 }
 
 const Input: React.FC<Props> = ({
@@ -12,6 +14,8 @@ const Input: React.FC<Props> = ({
   required = false,
   id,
   type,
+  pattern,
+  title,
 }) => (
   <div className="pb-2 p-5 card">
     <div className="flex flex-col items-start">
@@ -19,9 +23,11 @@ const Input: React.FC<Props> = ({
         <span className="text-sm">{label}</span>
       </label>
       <input
+        title={title}
         id={id}
         defaultValue={defaultValue}
         type={type}
+        pattern={pattern}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required={required}
       />
